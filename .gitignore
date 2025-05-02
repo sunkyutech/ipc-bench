@@ -99,3 +99,4 @@ build/
 output/
 *.result
 .tags*
+.vscode/
