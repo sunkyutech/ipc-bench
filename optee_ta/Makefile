@@ -10,8 +10,10 @@ TA_CROSS_COMPILE  ?= $(CROSS_COMPILE)
 ifeq ($(MAKECMDGOALS),domain)
 CFLAGS += -DMAKECMDGOAL_DOMAIN
 srcs-y  += ../source/domain/client.c
-srcs-y  += ../source/common/sockets.c
-srcs-y  += ../source/common/arguments.c
+srcs-y  += ../source/common/sockets_ta.c
+srcs-y  += ../source/common/arguments_ta.c
+srcs-y  += ../source/common/signals_ta.c
+srcs-y  += ../source/common/utility_ta.c
 TA_UUID := 11111111-1111-1111-1111-111111111111
 else ifeq ($(MAKECMDGOALS),eventfd)
 CFLAGS += -DMAKECMDGOAL_EVENTFD
@@ -49,6 +51,10 @@ else ifeq ($(MAKECMDGOALS),tcp)
 CFLAGS += -DMAKECMDGOAL_TCP
 srcs-y  += ../source/tcp/client.c
 TA_UUID := aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa
+else ifeq ($(MAKECMDGOALS),zeromq)
+CFLAGS += -DMAKECMDGOAL_ZEROMQ
+srcs-y  += ../source/zeromq/client.c
+TA_UUID := bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb
 else
 $(error Unknown directory: $(BASENAME))
 endif
