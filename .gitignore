@@ -96,7 +96,7 @@ install_manifest.txt
 build/
 
 # Other
+logs/
 output/
 *.result
 .tags*
-.vscode/
